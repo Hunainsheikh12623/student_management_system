@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 
-public class TestApp {
+
+
+class TestApp {
     @Test
-    public void testSampleMethod() {
-        App app = new App();
-        // Since sampleMethod only prints to console, we can just call it to ensure no exceptions are thrown
-        String str = app.sampleMethod();
-        assertNull(str); // sampleMethod does not return anything, so we expect null
+    void testMainRunsWithoutError() {
+        App.main(new String[]{});
     }
 }
+
