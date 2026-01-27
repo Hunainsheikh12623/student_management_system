@@ -1,10 +1,8 @@
-package test.java.com.demo.app;
+package com.demo.app;
 
-import main.java.com.demo.model.*;
-import main.java.com.demo.app.App;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
 
 
 

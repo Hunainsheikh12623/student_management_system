@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project coordinates -->
-    <groupId>main.java.com.demo.app</groupId>
+    <groupId>com.demo.app</groupId>
     <artifactId>student-management-system</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
@@ -80,7 +80,7 @@
                     <archive>
                         <manifest>
                             <!-- Main class to run -->
-                            <mainClass>main.java.com.demo.app.App</mainClass>
+                            <mainClass>com.demo.app.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

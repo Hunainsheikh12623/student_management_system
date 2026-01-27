@@ -1,6 +1,6 @@
-package main.java.com.demo.app;
+package com.demo.app;
 
-import main.java.com.demo.model.*;
+import com.demo.model.*;
 
 public class App {
     public static void main(String[] args) {
