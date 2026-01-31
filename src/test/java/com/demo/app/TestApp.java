@@ -1,17 +1,14 @@
 package com.demo.app;
 
-
+import com.demo.dao.StudentDAO;
 import org.junit.jupiter.api.Test;
 
+public class TestApp {
 
-
-
-
-
-class TestApp {
     @Test
-    void testMainRunsWithoutError() {
-        App.main(new String[]{});
+    void testDatabaseConnection() {
+        StudentDAO dao = new StudentDAO();
+        dao.getAllStudents();
+        System.out.println("✅ Database connected successfully");
     }
 }
-
