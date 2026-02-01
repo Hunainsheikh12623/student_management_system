@@ -9,7 +9,7 @@ public class StudentService {
 
     Scanner sc = new Scanner(System.in);
 
-    int id;
+    String id;
     String name;
     int age;
     String email;
@@ -17,9 +17,11 @@ public class StudentService {
     StudentDAO studentDAO = new StudentDAO();
     
 
-    public void redgisterStudent() {
+    public void registerStudent() {
 
         System.out.println("--- Register New Student ---");
+        System.out.println("Enter Id: ");
+        id = sc.nextLine();
         System.out.println("Enter Name: ");
         name = sc.nextLine();
         System.out.println("Enter Age: ");
@@ -27,7 +29,7 @@ public class StudentService {
         System.out.println("Enter Email: ");
         email = sc.nextLine();
 
-        Student student = new Student(name, age, email);
+        Student student = new Student(id,  name, age, email);
         studentDAO.addStudent(student);
 
         System.out.println("Registered Student Details: " + student);
@@ -45,7 +47,7 @@ public class StudentService {
 
     public void removeStudent() {
         System.out.println("Enter Student Id to remove: ");
-        id = Integer.parseInt(sc.nextLine());
+        id = sc.nextLine();
         studentDAO.deleteStudent(id);
         System.out.println("Student removed successfully!");
     }

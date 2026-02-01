@@ -11,7 +11,7 @@ public class StudentDAO {
 
     public void addStudent(Student student) {
 
-    String sql = "INSERT INTO students(name, age, email) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO Students(id, name, age, email) VALUES (?, ?, ?, ?)";
 
     try (Connection conn = DBUtil.getConnection();
          PreparedStatement ps = conn.prepareStatement(
@@ -19,17 +19,14 @@ public class StudentDAO {
                  Statement.RETURN_GENERATED_KEYS
          )) {
 
-        ps.setString(1, student.getName());
-        ps.setInt(2, student.getAge());
-        ps.setString(3, student.getEmail());
+        ps.setString(1, student.getId());
+        ps.setString(2, student.getName());
+        ps.setInt(3, student.getAge());
+        ps.setString(4, student.getEmail());
 
         ps.executeUpdate();
 
-        // 🔑 FETCH GENERATED ID
-        ResultSet rs = ps.getGeneratedKeys();
-        if (rs.next()) {
-            student.setId(rs.getInt(1));
-        }
+       
 
         System.out.println("✅ Student inserted successfully");
 
@@ -42,7 +39,7 @@ public class StudentDAO {
     public List<Student> getAllStudents() {
 
         List<Student> students = new ArrayList<>();
-        String sql = "SELECT * FROM students";
+        String sql = "SELECT * FROM Students";
 
         try (Connection conn = DBUtil.getConnection();
              Statement stmt = conn.createStatement();
@@ -50,12 +47,12 @@ public class StudentDAO {
 
             while (rs.next()) {
                 Student student = new Student(
+                        rs.getString("id"),
                         rs.getString("name"),
                         rs.getInt("age"),
                         rs.getString("email")
                         
                 );
-                student.setId(rs.getInt("id"));
                 students.add(student);          
             }
 
@@ -66,13 +63,13 @@ public class StudentDAO {
         return students;
     }
 
-    public void deleteStudent(int id) {
-        String sql = "DELETE FROM students WHERE id = ?";
+    public void deleteStudent(String id) {
+        String sql = "DELETE FROM Students WHERE id = ?";
 
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
+            ps.setString(1, id);
             ps.executeUpdate();
 
             System.out.println("✅ Student deleted successfully");

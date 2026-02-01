@@ -2,7 +2,7 @@ package com.demo.model;
 
 public class Student {
 
-    private int id;
+    private String id;
     private String name;
     private int age;
     private String email;
@@ -10,17 +10,18 @@ public class Student {
 
     public Student() {}
 
-    public Student(String name, int age, String email) {
+    public Student(String id, String name, int age, String email) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
