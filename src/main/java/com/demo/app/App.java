@@ -33,6 +33,12 @@ public class App {
                         studentService.removeStudent();
                         break;
                     case 4:
+                        studentService.getStudentById();
+                        break;
+                    case 5:
+                        studentService.updateStudentById();
+                        break;
+                    case 6:
                         System.out.println("Exiting application...");
                         sc.close();
                         return;
@@ -57,7 +63,9 @@ public class App {
         System.out.println("1. Register Student");
         System.out.println("2. List All Students");
         System.out.println("3. Remove Student");
-        System.out.println("4. Exit");
+        System.out.println("4. Get Student By Id");
+        System.out.println("5. Update Student By Id");
+        System.out.println("6. Exit");
         System.out.print("Enter your choice: ");
     }
 }

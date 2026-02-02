@@ -78,4 +78,52 @@ public class StudentDAO {
             e.printStackTrace();
         }
     }
+
+    public Student getStudentById(String id) {
+        String sql = "SELECT * FROM Students WHERE id = ?";
+        Student student = null;
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                student = new Student(
+                        rs.getString("id"),
+                        rs.getString("name"),
+                        rs.getInt("age"),
+                        rs.getString("email")
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return student;
+    }
+    
+    public void updateStudentById(String id, Student updatedStudent) {
+        String sql = "UPDATE Students SET name = ?, age = ?, email = ? WHERE id = ?";
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, updatedStudent.getName());
+            ps.setInt(2, updatedStudent.getAge());
+            ps.setString(3, updatedStudent.getEmail());
+            ps.setString(4, id);
+
+            ps.executeUpdate();
+
+            System.out.println("✅ Student updated successfully");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
+            
+

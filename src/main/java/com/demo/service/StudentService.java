@@ -52,6 +52,37 @@ public class StudentService {
         System.out.println("Student removed successfully!");
     }
 
+    public void getStudentById() {
+
+        System.out.println("Enter Student Id to get details: ");
+        id = sc.nextLine();
+
+        Student student = studentDAO.getStudentById(id);
+        if (student != null) {
+            System.out.println("Student Details: " + student);
+        } else {
+            System.out.println("Student with ID " + id + " not found.");
+        }
+    }
+
+    public void updateStudentById() {
+        System.out.println("Enter Student Id to update details: ");
+        id = sc.nextLine();
+
+        System.out.println("Enter new Name: ");
+        name = sc.nextLine();
+        System.out.println("Enter new Age: ");
+        age = Integer.parseInt(sc.nextLine());
+        System.out.println("Enter new Email: ");
+        email = sc.nextLine();
+
+        Student student = new Student(id,  name, age, email);
+        studentDAO.updateStudentById(id, student);
+
+        System.out.println("Updated Student Details: " + student);
+        System.out.println("Student details updated successfully!");
+    }
+
     
 
 }
